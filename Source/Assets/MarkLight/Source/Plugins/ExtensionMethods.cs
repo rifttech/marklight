@@ -513,9 +513,13 @@ namespace MarkLight
 
         /// <summary>
         /// Checks if a flag enum has a flag value set.
-        /// </summary>
+        /// </summary>`
         public static bool HasFlag(this Enum variable, Enum value)
         {
+            if (variable == null || value == null) {
+                throw new ArgumentNullException();
+            }
+
             // check if from the same type
             if (variable.GetType() != value.GetType())
             {
@@ -523,7 +527,6 @@ namespace MarkLight
                 return false;
             }
 
-            Convert.ToUInt64(value);
             ulong num = Convert.ToUInt64(value);
             ulong num2 = Convert.ToUInt64(variable);
             return (num2 & num) == num;
