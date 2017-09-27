@@ -428,8 +428,8 @@ namespace MarkLight.Views.UI
                 VerticalScrollbar = null;
             }
 
-            bool horizontalShown = HorizontalScrollbarVisibility.Value != PanelScrollbarVisibility.Hidden && HorizontalScrollbar != null;
-            bool verticalShown = VerticalScrollbarVisibility.Value != PanelScrollbarVisibility.Hidden && VerticalScrollbar != null;
+            bool horizontalShown = HorizontalScrollbar != null && HorizontalScrollbarVisibility.Value != PanelScrollbarVisibility.Hidden;
+            bool verticalShown = VerticalScrollbar != null && VerticalScrollbarVisibility.Value != PanelScrollbarVisibility.Hidden;
             float horizontalScrollbarBreadth = horizontalShown ? HorizontalScrollbar.Breadth.Value.Pixels : 0;
             float verticalScrollbarBreadth = verticalShown ? VerticalScrollbar.Breadth.Value.Pixels : 0;
 

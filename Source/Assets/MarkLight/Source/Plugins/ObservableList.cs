@@ -1,4 +1,5 @@
-﻿#region Using Statements
+﻿
+#region Using Statements
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -759,7 +760,7 @@ namespace MarkLight
             set
             {
                 var currentItem = _list[index];
-                bool valueChanged = value != null ? !value.Equals(currentItem) : currentItem != null;
+                bool valueChanged = !object.Equals(value, default(T)) ? !value.Equals(currentItem) : !object.Equals(currentItem, default(T));
                 if (valueChanged)
                 {
                     _list[index] = value;

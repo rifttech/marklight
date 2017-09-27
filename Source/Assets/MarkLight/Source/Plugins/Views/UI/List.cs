@@ -681,7 +681,8 @@ namespace MarkLight.Views.UI
             if (Overflow.Value != OverflowMode.Wrap)
                 return;
 
-            if (!_updateWidth && !_updateWidth)
+            if (!_updateWidth && !_updateHeight)
+                
                 return;
 
             if (_updateWidth && ActualWidth > 0)
