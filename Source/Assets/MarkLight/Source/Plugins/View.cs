@@ -1524,7 +1524,7 @@ namespace MarkLight
             else
             {
                 // instantiate template
-                go = Instantiate(template.gameObject) as GameObject;
+                go = Instantiate(template.gameObject);
             }
 
             go.hideFlags = UnityEngine.HideFlags.None;

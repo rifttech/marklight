@@ -537,8 +537,8 @@ namespace MarkLight.Views.UI
         {
             var tabItem = _presentedTabs.FirstOrDefault(x =>
             {
-                var item = x as Tab;
-                return item != null ? item.Item.Value == itemData : false;
+                var item = x;
+                return item != null && item.Item.Value == itemData;
             });
 
             if (tabItem == null)

@@ -395,7 +395,15 @@ namespace MarkLight.Views.UI
             float newValue = (Max - Min) * p + Min;
             newValue = Steps > 0 ? Nearest(newValue, Min, Max, Steps) : newValue;
 
-            if (!SetValueOnDragEnded || (SetValueOnDragEnded && isEndDrag))
+
+            /* 
+             * actual expr = !SetValueOnDragEnded || (SetValueOnDragEnded && isEndDrag)
+             * 
+             *  ~A + (A * B) <=> (~A + A) * (~A + B) <=> 1 * (~A + B) <=> ~A + B  [Distributive, Identity and Complement Laws]
+             *  ~,+,* are NOT,OR,AND
+             *  simplified expr = !SetValueOnDragEnded || isEndDrag
+             */
+            if (!SetValueOnDragEnded && isEndDrag)
             {
                 Value.Value = newValue;
                 ValueChanged.Trigger();
