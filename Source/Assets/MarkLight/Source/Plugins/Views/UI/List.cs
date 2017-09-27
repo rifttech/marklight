@@ -1229,7 +1229,7 @@ namespace MarkLight.Views.UI
                             continue;
 
                         // deselect and trigger actions
-                        SetSelected(presentedListItem as ListItem, false);
+                        SetSelected(presentedListItem, false);
                     }
                 }
 
@@ -1253,7 +1253,7 @@ namespace MarkLight.Views.UI
                 return;
             }
 
-            SelectItem(_presentedListItems[index] as ListItem, false);
+            SelectItem(_presentedListItems[index], false);
         }
 
         /// <summary>
@@ -1261,10 +1261,9 @@ namespace MarkLight.Views.UI
         /// </summary>
         public void SelectItem(object itemData)
         {
-            var listItem = _presentedListItems.FirstOrDefault(x =>
-            {
-                var item = x as ListItem;
-                return item != null ? item.Item.Value == itemData : false;
+            var listItem = _presentedListItems.FirstOrDefault(x => {
+                var item = x;
+                return item != null && item.Item.Value == itemData;
             });
 
             if (listItem == null)
@@ -1273,7 +1272,7 @@ namespace MarkLight.Views.UI
                 return;
             }
 
-            SelectItem(listItem as ListItem, false);
+            SelectItem(listItem, false);
         }
 
         /// <summary>
