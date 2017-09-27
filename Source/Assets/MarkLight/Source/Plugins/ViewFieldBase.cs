@@ -29,9 +29,9 @@ namespace MarkLight
         /// </summary>
         public void TriggerValueSet()
         {
-            if (ValueSet != null)
-            {
-                ValueSet(this, EventArgs.Empty);
+            if (ValueSet != null) {
+                var valueSet = ValueSet;
+                valueSet(this, EventArgs.Empty);
             }
         }
 
