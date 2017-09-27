@@ -305,7 +305,7 @@ namespace MarkLight.Animation
         /// </summary>
         public static float ExponentialEaseIn(float p)
         {
-            return (p == 0.0f) ? p : Mathf.Pow(2, 10 * (p - 1));
+            return (Mathf.Abs(p) < Mathf.Epsilon) ? p : Mathf.Pow(2, 10 * (p - 1));
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace MarkLight.Animation
         /// </summary>
         public static float ExponentialEaseOut(float p)
         {
-            return (p == 1.0f) ? p : 1 - Mathf.Pow(2, -10 * p);
+            return (Mathf.Abs(p - 1.0f) < Mathf.Epsilon) ? p : 1 - Mathf.Pow(2, -10 * p);
         }
 
         /// <summary>
@@ -323,7 +323,7 @@ namespace MarkLight.Animation
         /// </summary>
         public static float ExponentialEaseInOut(float p)
         {
-            if (p == 0.0f || p == 1.0f) return p;
+            if (Mathf.Abs(p) < Mathf.Epsilon || Mathf.Abs(p - 1.0f) < Mathf.Epsilon) return p;
 
             if (p < 0.5f)
             {
