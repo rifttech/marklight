@@ -409,6 +409,7 @@ namespace MarkLight
             if (themeNameAttr == null)
             {
                 Debug.LogError(String.Format("[MarkLight] {0}: Error parsing theme XUML. Name attribute missing.", xumlAssetName));
+                return;
             }
 
             viewPresenter.ThemeData.RemoveAll(x => String.Equals(x.ThemeName, themeNameAttr.Value, StringComparison.OrdinalIgnoreCase));
@@ -421,16 +422,20 @@ namespace MarkLight
             themeData.ThemeName = themeNameAttr.Value;
 
             var baseDirectoryAttr = xumlElement.Attribute("BaseDirectory");
-            themeData.BaseDirectorySet = baseDirectoryAttr != null;
-            if (themeData.BaseDirectorySet)
-            {
+           
+            if (baseDirectoryAttr != null) {
+                themeData.BaseDirectorySet = true;
                 themeData.BaseDirectory = baseDirectoryAttr.Value;
             }
+            else {
+                themeData.BaseDirectorySet = false;
+            }
+           
 
             var unitSizeAttr = xumlElement.Attribute("UnitSize");
-            themeData.UnitSizeSet = unitSizeAttr != null;
-            if (themeData.UnitSizeSet)
-            {
+            if (unitSizeAttr != null) {
+                themeData.UnitSizeSet = true;
+
                 if (String.IsNullOrEmpty(unitSizeAttr.Value))
                 {
                     // use default unit size
@@ -450,6 +455,9 @@ namespace MarkLight
                         themeData.UnitSize = ViewPresenter.Instance.UnitSize;
                     }
                 }
+            }
+            else {
+                themeData.UnitSizeSet = false;
             }
 
             // load theme elements

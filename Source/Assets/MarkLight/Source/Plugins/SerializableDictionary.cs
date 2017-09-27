@@ -145,11 +145,11 @@ namespace MarkLight
 
         public bool ContainsValue(TValue value)
         {
-            if (value == null)
+            if (object.Equals(value, default(TValue)))
             {
                 for (int i = 0; i < _Count; i++)
                 {
-                    if (_HashCodes[i] >= 0 && _Values[i] == null)
+                    if (_HashCodes[i] >= 0 && object.Equals(_Values[i], default(TValue)))
                         return true;
                 }
             }
@@ -240,7 +240,7 @@ namespace MarkLight
 
         public bool Remove(TKey key)
         {
-            if (key == null)
+            if (object.Equals(key, default(TKey)))
                 return false;
 
             int hash = _Comparer.GetHashCode(key) & 2147483647;
@@ -271,7 +271,7 @@ namespace MarkLight
 
         private void Insert(TKey key, TValue value, bool add)
         {
-            if (key == null)
+            if (object.Equals(key,default(TKey)))
                 throw new ArgumentNullException("key");
 
             if (_Buckets == null)
@@ -342,7 +342,7 @@ namespace MarkLight
 
         private int FindIndex(TKey key)
         {
-            if (key == null)
+            if (object.Equals(key, default(TKey)))
                 return -1;
 
             if (_Buckets != null)
