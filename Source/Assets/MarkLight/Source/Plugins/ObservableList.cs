@@ -21,7 +21,7 @@ namespace MarkLight
 
         private List<T> _list;
         private object _selectedItem;
-        public event EventHandler<ListChangedEventArgs> ListChanged;        
+        public event EventHandler<ListChangedEventArgs> ListChanged = (sender, args) => { };        
 
         #endregion
 

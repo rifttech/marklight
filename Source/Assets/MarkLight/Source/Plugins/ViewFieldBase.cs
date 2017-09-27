@@ -18,7 +18,7 @@ namespace MarkLight
         public string ViewFieldPath;
         public bool IsMapped;
         public bool _isSet;
-        public event EventHandler ValueSet;
+        public event EventHandler ValueSet = (sender, args) => { };
 
         #endregion
 
@@ -29,9 +29,8 @@ namespace MarkLight
         /// </summary>
         public void TriggerValueSet()
         {
-            if (ValueSet != null) {
-                var valueSet = ValueSet;
-                valueSet(this, EventArgs.Empty);
+            if (ValueSet != null) {                
+                ValueSet(this, EventArgs.Empty);
             }
         }
 
