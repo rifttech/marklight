@@ -226,9 +226,10 @@ namespace Marklight.DevTools.Source.Editor
                             viewFieldTypeSummary = String.Format("<a href=\"{0}\">{1}</a>", viewFieldTypeDoc.FileName, viewFieldTypeDoc.HtmlTypeName);
                         }                        
                         else
-                        {
+                        {   
+                           
                             // check if the type is a Unity type
-                            if (viewFieldData.ViewFieldType.FullName.StartsWith("UnityEngine"))
+                            if (viewFieldData.ViewFieldType != null && viewFieldData.ViewFieldType.FullName.StartsWith("UnityEngine"))
                             {
                                 // reference the unity docs
                                 viewFieldTypeSummary = String.Format("<a href=\"http://docs.unity3d.com/ScriptReference/{0}.html\">{1} <i class=\"fa fa-external-link fa-tiny\"></i></a>", viewFieldTypeSummary, viewFieldTypeSummary);

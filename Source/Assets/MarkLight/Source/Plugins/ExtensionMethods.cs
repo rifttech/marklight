@@ -743,6 +743,22 @@ namespace MarkLight
             return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
         }
 
+
+        public static TResult With<TInput, TResult>(this TInput x, Func<TInput, TResult> f)
+            where TInput: class 
+            where TResult: class {
+            return x == null ? null : f(x);
+        }
+
+        public static TResult Return<TInput, TResult>(this TInput x, Func<TInput, TResult> f, TResult failureValue)
+            where TInput : class
+            where TResult : class {
+            return x == null ? failureValue : f(x);
+        }
+        public static bool ResurnSuccess<TInput, TResult>(this TInput x)
+            where TInput : class {
+            return x != null;
+        }
         #endregion
     }
 }
